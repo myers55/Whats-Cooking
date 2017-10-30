@@ -1,0 +1,12 @@
+body{
+    background: #e65100;
+}
+.container{
+    background: #ff6d00;
+}
+nav .brand-logo{
+    padding-left: 10px;
+}
+.card{
+    background-color: #ff6e40;
+}

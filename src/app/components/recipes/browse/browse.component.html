@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="card col s12 m6 l3" *ngFor="let recipe of recipes" [routerLink]="recipe.id">
+    <div class="card-image waves-effect waves-block waves-light ">
+      <img class="" [src]="recipe.smallImageUrls[0]">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4 truncate">{{recipe.recipeName}}</span>
+
+    </div>
+  </div>
+</div>
