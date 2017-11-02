@@ -1,13 +1,19 @@
 export class Recipe{
     public id: string;
     public recipeName: string;
-    public ingredients: string[];  
+    public ingredientLines: string[];  
     public smallImageUrls: string[];
-    public imageUrlsBySize: string[];
+
 
 
     constructor () { 
-        this.ingredients = [];
+        this.ingredientLines = [];
     }
+}
+export class Attribution{
+    public html: string;
+    public logo: string;
+    public text: string;
+    public url: string;
 }
 
