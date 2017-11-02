@@ -5,12 +5,12 @@
         <input id="search" type="search" [(ngModel)]="query" (keyup.enter)="search(query)" placeholder="Search Ex. Soup">
       </div>
       <div class="row">
-        <a class="right" (click)="showAdvance = !showAdvance">Advance Search</a>
+        <a class="right advanceSearch" (click)="showAdvance = !showAdvance">Advance Search</a>
       </div>
       <div class="row" *ngIf="showAdvance">
         <div class="row">
           <div class="col s10">
-            <input type="text" placeholder="Search by ingredients" [(ngModel)]="ingredient" (keyup.enter)="addIngredient(ingredient)">
+            <input type="text" class="ingredientSearch" placeholder="Search by ingredients" [(ngModel)]="ingredient" (keyup.enter)="addIngredient(ingredient)">
           </div>
           <div class="col s2">
             <button class="btn" (click)="addIngredient(ingredient)">Add</button>
@@ -18,7 +18,7 @@
 
         </div>
 
-        <ul class="collection" *ngIf="ingredients.length > 0">
+        <ul class="collection col s12" *ngIf="ingredients.length > 0">
           <li class="collection-item" *ngFor="let ingredient of ingredients">
               <i class="material-icons right" (click)="removeIngredient(ingredient)">close</i>
             <span>{{ingredient}}</span>
