@@ -27,7 +27,7 @@ export class RecipesService {
 
 
   public getAll() {
-    let promise = this.http.get<YummlyResponse>(`http://api.yummly.com/v1/api/recipes?maxResult=60`, { headers: this.headers })
+    let promise = this.http.get<YummlyResponse>(`http://api.yummly.com/v1/api/recipes?maxResult=60&requirePictures=true`, { headers: this.headers })
 
       .toPromise();
 
@@ -43,15 +43,16 @@ export class RecipesService {
   }
 
 
-  public search(query: string, ingrediants: string[]) {
+  public search(query: string, ingredients: string[]) {
     let params = new HttpParams();
     if(query){
           params = params.set("q", query);
     }
     params = params.set("maxResult", "60")
+    params = params.set("requirePictures", "true")
     // .set("start", "0");
-    for(let ingrediant of ingrediants){
-      params = params.append("allowedIngredient[]", ingrediant);
+    for(let ingredient of ingredients){
+      params = params.append("allowedIngredient[]", ingredient);
     }
     let promise = this.http.get<YummlyResponse>(`http://api.yummly.com/v1/api/recipes`, { headers: this.headers, params: params })
           .toPromise();

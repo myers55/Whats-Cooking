@@ -13,13 +13,13 @@ import { ActivatedRoute } from "@angular/router";
 export class BrowseComponent implements OnInit {
   public recipesObservable: Observable<Recipe[]>;
   public attribution: Attribution;
-  public ingrediants: string[]; 
-  public ingrediant: string;
+  public ingredients: string[]; 
+  public ingredient: string;
   public query: string;
 
   constructor(private recipesService: RecipesService, private activateRoute: ActivatedRoute) {
     this.recipesObservable = recipesService.recipesObservable;
-    this.ingrediants = [];
+    this.ingredients = [];
 
   }
 
@@ -36,27 +36,28 @@ export class BrowseComponent implements OnInit {
   public async search(query: string) {
 
     if (query) {
-      var response = await this.recipesService.search(query, this.ingrediants);
+      var response = await this.recipesService.search(query, this.ingredients);
       this.attribution = response.attribution;
     }
     else {
       var response = await this.recipesService.getAll();
       this.attribution = response.attribution;
     }
-  }
-
-
-  public async addIngrediant(ingrediant: string){
-    this.ingrediants.push(ingrediant);
-    var response = await this.recipesService.search(this.query, this.ingrediants);
-    this.ingrediant="";
 
   }
 
 
-  public async removeIngrediant(ingrediant: string){
-    var index = this.ingrediants.findIndex(q => q === ingrediant);
-    var response = await this.recipesService.search(this.query, this.ingrediants);    
-    this.ingrediants.splice(index, 1);
+  public async addIngredient(ingredient: string){
+    this.ingredients.push(ingredient);
+    var response = await this.recipesService.search(this.query, this.ingredients);
+    this.ingredient="";
+
+  }
+
+
+  public async removeIngredient(ingredient: string){
+    var index = this.ingredients.findIndex(q => q === ingredient);
+    var response = await this.recipesService.search(this.query, this.ingredients);    
+    this.ingredients.splice(index, 1);
   }
 }
